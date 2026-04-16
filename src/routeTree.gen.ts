@@ -9,38 +9,190 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as DocsRouteImport } from './routes/docs'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DocsSecurityRouteImport } from './routes/docs.security'
+import { Route as DocsSearchRouteImport } from './routes/docs.search'
+import { Route as DocsDraftingRouteImport } from './routes/docs.drafting'
+import { Route as DocsCrmRouteImport } from './routes/docs.crm'
+import { Route as DocsCollaborationRouteImport } from './routes/docs.collaboration'
+import { Route as DocsAutomationRouteImport } from './routes/docs.automation'
+import { Route as DocsAssistantRouteImport } from './routes/docs.assistant'
+import { Route as DocsAnalysisRouteImport } from './routes/docs.analysis'
+import { Route as DocsAgentsRouteImport } from './routes/docs.agents'
 
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocsSecurityRoute = DocsSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsSearchRoute = DocsSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsDraftingRoute = DocsDraftingRouteImport.update({
+  id: '/drafting',
+  path: '/drafting',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsCrmRoute = DocsCrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsCollaborationRoute = DocsCollaborationRouteImport.update({
+  id: '/collaboration',
+  path: '/collaboration',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsAutomationRoute = DocsAutomationRouteImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsAssistantRoute = DocsAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsAnalysisRoute = DocsAnalysisRouteImport.update({
+  id: '/analysis',
+  path: '/analysis',
+  getParentRoute: () => DocsRoute,
+} as any)
+const DocsAgentsRoute = DocsAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => DocsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
+  '/docs': typeof DocsRouteWithChildren
+  '/docs/agents': typeof DocsAgentsRoute
+  '/docs/analysis': typeof DocsAnalysisRoute
+  '/docs/assistant': typeof DocsAssistantRoute
+  '/docs/automation': typeof DocsAutomationRoute
+  '/docs/collaboration': typeof DocsCollaborationRoute
+  '/docs/crm': typeof DocsCrmRoute
+  '/docs/drafting': typeof DocsDraftingRoute
+  '/docs/search': typeof DocsSearchRoute
+  '/docs/security': typeof DocsSecurityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
+  '/docs': typeof DocsRouteWithChildren
+  '/docs/agents': typeof DocsAgentsRoute
+  '/docs/analysis': typeof DocsAnalysisRoute
+  '/docs/assistant': typeof DocsAssistantRoute
+  '/docs/automation': typeof DocsAutomationRoute
+  '/docs/collaboration': typeof DocsCollaborationRoute
+  '/docs/crm': typeof DocsCrmRoute
+  '/docs/drafting': typeof DocsDraftingRoute
+  '/docs/search': typeof DocsSearchRoute
+  '/docs/security': typeof DocsSecurityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
+  '/docs': typeof DocsRouteWithChildren
+  '/docs/agents': typeof DocsAgentsRoute
+  '/docs/analysis': typeof DocsAnalysisRoute
+  '/docs/assistant': typeof DocsAssistantRoute
+  '/docs/automation': typeof DocsAutomationRoute
+  '/docs/collaboration': typeof DocsCollaborationRoute
+  '/docs/crm': typeof DocsCrmRoute
+  '/docs/drafting': typeof DocsDraftingRoute
+  '/docs/search': typeof DocsSearchRoute
+  '/docs/security': typeof DocsSecurityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/demo'
+    | '/docs'
+    | '/docs/agents'
+    | '/docs/analysis'
+    | '/docs/assistant'
+    | '/docs/automation'
+    | '/docs/collaboration'
+    | '/docs/crm'
+    | '/docs/drafting'
+    | '/docs/search'
+    | '/docs/security'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/demo'
+    | '/docs'
+    | '/docs/agents'
+    | '/docs/analysis'
+    | '/docs/assistant'
+    | '/docs/automation'
+    | '/docs/collaboration'
+    | '/docs/crm'
+    | '/docs/drafting'
+    | '/docs/search'
+    | '/docs/security'
+  id:
+    | '__root__'
+    | '/'
+    | '/demo'
+    | '/docs'
+    | '/docs/agents'
+    | '/docs/analysis'
+    | '/docs/assistant'
+    | '/docs/automation'
+    | '/docs/collaboration'
+    | '/docs/crm'
+    | '/docs/drafting'
+    | '/docs/search'
+    | '/docs/security'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DemoRoute: typeof DemoRoute
+  DocsRoute: typeof DocsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,21 +200,103 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/docs/security': {
+      id: '/docs/security'
+      path: '/security'
+      fullPath: '/docs/security'
+      preLoaderRoute: typeof DocsSecurityRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/search': {
+      id: '/docs/search'
+      path: '/search'
+      fullPath: '/docs/search'
+      preLoaderRoute: typeof DocsSearchRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/drafting': {
+      id: '/docs/drafting'
+      path: '/drafting'
+      fullPath: '/docs/drafting'
+      preLoaderRoute: typeof DocsDraftingRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/crm': {
+      id: '/docs/crm'
+      path: '/crm'
+      fullPath: '/docs/crm'
+      preLoaderRoute: typeof DocsCrmRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/collaboration': {
+      id: '/docs/collaboration'
+      path: '/collaboration'
+      fullPath: '/docs/collaboration'
+      preLoaderRoute: typeof DocsCollaborationRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/automation': {
+      id: '/docs/automation'
+      path: '/automation'
+      fullPath: '/docs/automation'
+      preLoaderRoute: typeof DocsAutomationRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/assistant': {
+      id: '/docs/assistant'
+      path: '/assistant'
+      fullPath: '/docs/assistant'
+      preLoaderRoute: typeof DocsAssistantRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/analysis': {
+      id: '/docs/analysis'
+      path: '/analysis'
+      fullPath: '/docs/analysis'
+      preLoaderRoute: typeof DocsAnalysisRouteImport
+      parentRoute: typeof DocsRoute
+    }
+    '/docs/agents': {
+      id: '/docs/agents'
+      path: '/agents'
+      fullPath: '/docs/agents'
+      preLoaderRoute: typeof DocsAgentsRouteImport
+      parentRoute: typeof DocsRoute
+    }
   }
 }
 
+interface DocsRouteChildren {
+  DocsAgentsRoute: typeof DocsAgentsRoute
+  DocsAnalysisRoute: typeof DocsAnalysisRoute
+  DocsAssistantRoute: typeof DocsAssistantRoute
+  DocsAutomationRoute: typeof DocsAutomationRoute
+  DocsCollaborationRoute: typeof DocsCollaborationRoute
+  DocsCrmRoute: typeof DocsCrmRoute
+  DocsDraftingRoute: typeof DocsDraftingRoute
+  DocsSearchRoute: typeof DocsSearchRoute
+  DocsSecurityRoute: typeof DocsSecurityRoute
+}
+
+const DocsRouteChildren: DocsRouteChildren = {
+  DocsAgentsRoute: DocsAgentsRoute,
+  DocsAnalysisRoute: DocsAnalysisRoute,
+  DocsAssistantRoute: DocsAssistantRoute,
+  DocsAutomationRoute: DocsAutomationRoute,
+  DocsCollaborationRoute: DocsCollaborationRoute,
+  DocsCrmRoute: DocsCrmRoute,
+  DocsDraftingRoute: DocsDraftingRoute,
+  DocsSearchRoute: DocsSearchRoute,
+  DocsSecurityRoute: DocsSecurityRoute,
+}
+
+const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DemoRoute: DemoRoute,
+  DocsRoute: DocsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tantml/react-router";
+import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 import { Users, MessageCircle, FolderOpen, Edit3 } from "lucide-react";
 
 export const Route = createFileRoute("/docs/collaboration")({
