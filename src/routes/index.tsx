@@ -1,264 +1,404 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   FileSearch, PenTool, MessageSquare, Bot, Briefcase,
-  Search, Users, Zap, Shield, ArrowRight, CheckCircle,
-  Upload, HelpCircle, FileText, Play, Star, TrendingUp,
-  Clock, DollarSign, BarChart3
+  Search, Users, Zap, Shield, Play, ArrowRight
 } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Jurify CRM — Analiza, gestiona y crea documentos legales con IA" },
-      { name: "description", content: "El sistema operativo legal con IA que permite analizar, gestionar y crear documentos legales en minutos, no horas." },
-      { property: "og:title", content: "Jurify CRM — Sistema Operativo Legal con IA" },
+      { title: "Jurify CRM — Documentación" },
+      { name: "description", content: "Bienvenido a Jurify CRM, tu recurso para configuración avanzada y mejores prácticas en gestión legal con IA." },
+      { property: "og:title", content: "Jurify CRM — Documentación" },
       { property: "og:description", content: "Analiza contratos, gestiona casos y crea documentos legales con IA en minutos." },
     ],
   }),
 });
 
-const modules = [
-  { icon: FileSearch, title: "Análisis de Documentos", desc: "Análisis de contratos, detección de riesgos, extracción de cláusulas y comparación entre documentos.", to: "/docs/analysis" },
-  { icon: PenTool, title: "Redacción Legal con IA", desc: "Generación de contratos, demandas y escritos personalizados basados en documentos internos.", to: "/docs/drafting" },
-  { icon: MessageSquare, title: "Asistente Legal", desc: "Chat contextual que responde con base en tus documentos y guía paso a paso.", to: "/docs/assistant" },
-  { icon: Bot, title: "Agentes de IA", desc: "Recopilan información, analizan documentos y generan reportes automáticos.", to: "/docs/agents" },
-  { icon: Briefcase, title: "CRM Legal", desc: "Gestión de casos, contactos, timeline y estados de procesos legales.", to: "/docs/crm" },
-  { icon: Search, title: "Búsqueda Inteligente", desc: "Búsqueda semántica en todos tus documentos, precedentes y cláusulas.", to: "/docs/search" },
-  { icon: Users, title: "Colaboración", desc: "Edición simultánea, comentarios, asignaciones y workspaces compartidos.", to: "/docs/collaboration" },
-  { icon: Zap, title: "Automatización", desc: "Flujos legales automáticos, seguimiento de plazos y monitoreo de cumplimiento.", to: "/docs/automation" },
-];
-
-const steps = [
-  { icon: Upload, title: "Sube documentos", desc: "PDF, DOCX, TXT — cualquier formato legal." },
-  { icon: HelpCircle, title: "Pregunta en lenguaje natural", desc: "\"¿Cuáles son los riesgos de este contrato?\"" },
-  { icon: FileSearch, title: "Obtén análisis con citas", desc: "Respuestas fundamentadas con referencias exactas." },
-  { icon: FileText, title: "Genera documentos o actúa", desc: "Redacta, modifica o comparte en segundos." },
-];
-
-const metrics = [
-  { icon: Clock, value: "+60%", label: "Más rápido" },
-  { icon: BarChart3, value: "3x", label: "Más casos gestionados" },
-  { icon: DollarSign, value: "-40%", label: "Reducción de costos" },
-  { icon: TrendingUp, value: "2x", label: "Eficiencia operativa" },
-];
-
-const useCases = [
-  "Estudios jurídicos", "Abogados independientes", "Equipos legales internos", "Estudiantes de derecho"
+const cards = [
+  {
+    icon: FileSearch,
+    title: "Análisis de Documentos",
+    desc: "Analiza contratos, detecta riesgos y extrae cláusulas clave con IA.",
+    to: "/docs/analysis",
+    bg: "var(--card-purple)",
+    iconBg: "var(--card-purple-icon)",
+  },
+  {
+    icon: Briefcase,
+    title: "CRM Legal",
+    desc: "Gestiona casos, contactos y procesos legales en un solo lugar.",
+    to: "/docs/crm",
+    bg: "var(--card-pink)",
+    iconBg: "var(--card-pink-icon)",
+  },
+  {
+    icon: Bot,
+    title: "Agentes de IA",
+    desc: "Agentes autónomos que recopilan información y generan reportes.",
+    to: "/docs/agents",
+    bg: "var(--card-yellow)",
+    iconBg: "var(--card-yellow-icon)",
+  },
+  {
+    icon: PenTool,
+    title: "Redacción Legal",
+    desc: "Genera contratos, demandas y escritos personalizados con IA.",
+    to: "/docs/drafting",
+    bg: "var(--card-red)",
+    iconBg: "var(--card-red-icon)",
+  },
+  {
+    icon: MessageSquare,
+    title: "Asistente Legal",
+    desc: "Chat inteligente que responde con base en tus documentos.",
+    to: "/docs/assistant",
+    bg: "var(--card-blue)",
+    iconBg: "var(--card-blue-icon)",
+  },
+  {
+    icon: Zap,
+    title: "Automatización",
+    desc: "Flujos legales automáticos, plazos y monitoreo de cumplimiento.",
+    to: "/docs/automation",
+    bg: "var(--card-orange)",
+    iconBg: "var(--card-orange-icon)",
+  },
+  {
+    icon: Search,
+    title: "Búsqueda Inteligente",
+    desc: "Búsqueda semántica en documentos, precedentes y cláusulas.",
+    to: "/docs/search",
+    bg: "var(--card-green)",
+    iconBg: "var(--card-green-icon)",
+  },
+  {
+    icon: Users,
+    title: "Colaboración",
+    desc: "Edición simultánea, comentarios y workspaces compartidos.",
+    to: "/docs/collaboration",
+    bg: "var(--card-teal)",
+    iconBg: "var(--card-teal-icon)",
+  },
+  {
+    icon: Shield,
+    title: "Seguridad",
+    desc: "Cifrado extremo a extremo, TLS y nube privada opcional.",
+    to: "/docs/security",
+    bg: "var(--card-gray)",
+    iconBg: "var(--card-gray-icon)",
+  },
 ];
 
 function Index() {
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar - simplified for landing */}
-      <aside className="hidden lg:flex w-64 border-r border-border bg-sidebar flex-col">
-        <div className="flex items-center gap-2.5 px-5 py-4 border-b border-border">
-          <div className="h-7 w-7 rounded-lg bg-gradient-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">J</span>
-          </div>
-          <span className="font-semibold text-sidebar-foreground text-[15px] tracking-tight">Jurify CRM</span>
-        </div>
-        <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
-          <p className="px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Plataforma</p>
-          {modules.map((m) => (
-            <Link
-              key={m.to}
-              to={m.to}
-              className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[13px] text-sidebar-foreground hover:bg-sidebar-accent/60 transition-colors"
-            >
-              <m.icon size={15} className="text-muted-foreground" />
-              {m.title}
-            </Link>
-          ))}
-          <p className="px-2 py-1.5 mt-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Más</p>
-          <Link
-            to="/demo"
-            className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[13px] text-sidebar-foreground hover:bg-sidebar-accent/60 transition-colors"
-          >
-            <Play size={15} className="text-muted-foreground" />
-            Demo Interactiva
-          </Link>
-          <Link
-            to="/docs/security"
-            className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[13px] text-sidebar-foreground hover:bg-sidebar-accent/60 transition-colors"
-          >
-            <Shield size={15} className="text-muted-foreground" />
-            Seguridad
-          </Link>
-        </nav>
-        <div className="p-4 border-t border-border">
-          <Link
-            to="/demo"
-            className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
-          >
-            <Play size={14} />
-            Probar Demo
-          </Link>
-        </div>
-      </aside>
+      {/* Sidebar */}
+      <Sidebar />
 
-      {/* Main content */}
+      {/* Main */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Mobile header */}
-        <header className="sticky top-0 z-30 flex items-center justify-between h-12 px-4 border-b border-border bg-background/80 backdrop-blur-md lg:justify-end">
-          <div className="flex items-center gap-2.5 lg:hidden">
-            <div className="h-6 w-6 rounded-md bg-gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">J</span>
-            </div>
-            <span className="font-semibold text-sm">Jurify CRM</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href="#" className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Iniciar sesión
-            </a>
-            <a href="#" className="text-[13px] font-medium px-3.5 py-1.5 rounded-lg bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity">
-              Probar gratis
-            </a>
-          </div>
-        </header>
+        <TopBar />
 
-        <div className="flex-1 overflow-y-auto">
-          {/* Hero */}
-          <section className="relative px-6 pt-16 pb-20 lg:px-16 lg:pt-24 lg:pb-28 bg-gradient-hero">
-            <div className="max-w-3xl mx-auto text-center animate-fade-up">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-card text-[12px] font-medium text-muted-foreground mb-6">
-                <Star size={12} className="text-primary" />
-                Respaldado por líderes del sector
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1] text-foreground">
-                Analiza contratos, gestiona casos y crea documentos legales{" "}
-                <span className="text-gradient-primary">con IA en minutos</span>
-              </h1>
-              <p className="mt-5 text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Jurify CRM combina inteligencia artificial, automatización y gestión legal en una sola plataforma.
-                El sistema operativo legal que permite analizar, gestionar y crear documentos en minutos, no horas.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-gradient-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity shadow-glow"
+        <main className="flex-1 overflow-y-auto">
+          <div className="max-w-4xl mx-auto px-8 py-10 lg:px-12 lg:py-14">
+            {/* Breadcrumb */}
+            <p className="text-sm text-primary font-medium mb-2">Jurify CRM</p>
+
+            {/* Title */}
+            <h1 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
+              Descubre Jurify CRM
+            </h1>
+
+            {/* Description */}
+            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-2xl">
+              Bienvenido a Jurify CRM, tu recurso para el sistema operativo legal con IA
+              que permite analizar, gestionar y crear documentos legales en minutos, no horas.
+            </p>
+
+            {/* Cards Grid */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {cards.map((card) => (
+                <Link
+                  key={card.to}
+                  to={card.to}
+                  className="group block rounded-xl border border-border overflow-hidden hover:shadow-md transition-shadow"
                 >
-                  Probar gratis <ArrowRight size={16} />
-                </a>
+                  {/* Color top area with icon */}
+                  <div
+                    className="flex items-center justify-center h-28"
+                    style={{ backgroundColor: card.bg }}
+                  >
+                    <div
+                      className="w-14 h-14 rounded-xl flex items-center justify-center"
+                      style={{ backgroundColor: card.iconBg }}
+                    >
+                      <card.icon size={28} className="text-foreground" />
+                    </div>
+                  </div>
+
+                  {/* Text content */}
+                  <div className="px-5 py-4 bg-card">
+                    <h3 className="font-semibold text-[15px] text-foreground group-hover:text-primary transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
+                      {card.desc}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Demo CTA */}
+            <div className="mt-12 p-6 rounded-xl border border-border bg-card">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <h2 className="font-semibold text-foreground flex items-center gap-2">
+                    <Play size={16} className="text-primary" />
+                    Demo Interactiva
+                  </h2>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Prueba el asistente legal con IA de Jurify CRM directamente en tu navegador.
+                  </p>
+                </div>
                 <Link
                   to="/demo"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-border bg-card text-foreground font-medium text-sm hover:bg-accent transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity flex-shrink-0"
                 >
-                  <Play size={14} /> Ver demo
+                  Probar demo <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
-          </section>
+          </div>
 
-          {/* How it works */}
-          <section className="px-6 py-16 lg:px-16 border-t border-border">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold text-center text-foreground mb-10">Cómo funciona</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {steps.map((step, i) => (
-                  <div key={i} className="relative text-center p-5 rounded-xl border border-border bg-card hover:shadow-glow transition-shadow">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary mb-3">
-                      <step.icon size={20} />
-                    </div>
-                    <div className="absolute top-3 left-3 text-[11px] font-bold text-muted-foreground/40">{i + 1}</div>
-                    <h3 className="font-semibold text-sm text-foreground">{step.title}</h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
-                  </div>
-                ))}
+          {/* Floating search bar */}
+          <div className="sticky bottom-0 px-8 pb-5 pt-2 lg:px-12">
+            <div className="max-w-2xl mx-auto">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-card shadow-lg">
+                <Search size={16} className="text-muted-foreground" />
+                <span className="flex-1 text-sm text-muted-foreground">Haz una pregunta...</span>
+                <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-muted text-[11px] text-muted-foreground font-mono">
+                  Ctrl+I
+                </kbd>
               </div>
             </div>
-          </section>
-
-          {/* Modules */}
-          <section className="px-6 py-16 lg:px-16 border-t border-border bg-surface">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-2xl font-bold text-center text-foreground mb-3">Módulos principales</h2>
-              <p className="text-center text-muted-foreground text-sm mb-10 max-w-xl mx-auto">
-                Todo lo que necesitas para transformar la práctica legal, integrado en una sola plataforma.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {modules.map((m) => (
-                  <Link
-                    key={m.to}
-                    to={m.to}
-                    className="group p-5 rounded-xl border border-border bg-card hover:border-gradient hover:shadow-glow transition-all"
-                  >
-                    <div className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/15 transition-colors">
-                      <m.icon size={18} />
-                    </div>
-                    <h3 className="font-semibold text-sm text-foreground">{m.title}</h3>
-                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{m.desc}</p>
-                    <span className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                      Explorar <ArrowRight size={12} />
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Metrics */}
-          <section className="px-6 py-16 lg:px-16 border-t border-border">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold text-center text-foreground mb-10">Resultados reales</h2>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                {metrics.map((m, i) => (
-                  <div key={i} className="text-center">
-                    <m.icon size={20} className="mx-auto text-primary mb-2" />
-                    <div className="text-3xl font-extrabold text-gradient-primary">{m.value}</div>
-                    <div className="mt-1 text-xs text-muted-foreground">{m.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Use Cases */}
-          <section className="px-6 py-16 lg:px-16 border-t border-border bg-surface">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl font-bold text-foreground mb-6">¿Para quién es Jurify CRM?</h2>
-              <div className="flex flex-wrap justify-center gap-3">
-                {useCases.map((uc) => (
-                  <span key={uc} className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border bg-card text-sm text-foreground">
-                    <CheckCircle size={14} className="text-primary" />
-                    {uc}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* CTA */}
-          <section className="px-6 py-20 lg:px-16 border-t border-border">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-2xl lg:text-3xl font-extrabold text-foreground">
-                Empieza hoy a trabajar como un estudio{" "}
-                <span className="text-gradient-primary">10x más eficiente</span>
-              </h2>
-              <p className="mt-4 text-muted-foreground text-sm">
-                Únete a los profesionales legales que ya están transformando su práctica con inteligencia artificial.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a href="#" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-gradient-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity shadow-glow">
-                  Probar gratis <ArrowRight size={16} />
-                </a>
-                <a href="#" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-border bg-card text-foreground font-medium text-sm hover:bg-accent transition-colors">
-                  Agendar demo
-                </a>
-                <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Hablar con ventas →
-                </a>
-              </div>
-            </div>
-          </section>
-
-          {/* Footer */}
-          <footer className="px-6 py-8 border-t border-border text-center">
-            <p className="text-xs text-muted-foreground">© 2026 Jurify CRM. Todos los derechos reservados.</p>
-          </footer>
-        </div>
+          </div>
+        </main>
       </div>
     </div>
+  );
+}
+
+/* ─── Sidebar ─── */
+
+import {
+  ChevronDown, ChevronRight, Menu, X, Settings, Moon, Globe
+} from "lucide-react";
+import { useState } from "react";
+import { useLocation } from "@tanstack/react-router";
+
+const sidebarSections = [
+  {
+    icon: FileSearch,
+    label: "Análisis de Documentos",
+    to: "/docs/analysis",
+    children: [
+      { label: "Análisis de Documentos", to: "/docs/analysis" },
+    ],
+  },
+  {
+    icon: Briefcase,
+    label: "CRM Legal",
+    to: "/docs/crm",
+    children: [
+      { label: "CRM Legal", to: "/docs/crm" },
+    ],
+  },
+  {
+    icon: Bot,
+    label: "Agentes de IA",
+    to: "/docs/agents",
+    children: [
+      { label: "Agentes de IA", to: "/docs/agents" },
+    ],
+  },
+  {
+    icon: PenTool,
+    label: "Redacción Legal",
+    to: "/docs/drafting",
+    children: [
+      { label: "Redacción Legal", to: "/docs/drafting" },
+    ],
+  },
+  {
+    icon: MessageSquare,
+    label: "Asistente Legal",
+    to: "/docs/assistant",
+    children: [
+      { label: "Asistente Legal", to: "/docs/assistant" },
+    ],
+  },
+  {
+    icon: Zap,
+    label: "Automatización",
+    to: "/docs/automation",
+    children: [
+      { label: "Automatización", to: "/docs/automation" },
+    ],
+  },
+  {
+    icon: Users,
+    label: "Colaboración",
+    to: "/docs/collaboration",
+    children: [
+      { label: "Colaboración", to: "/docs/collaboration" },
+    ],
+  },
+  {
+    icon: Shield,
+    label: "Seguridad",
+    to: "/docs/security",
+    children: [
+      { label: "Seguridad", to: "/docs/security" },
+    ],
+  },
+  {
+    icon: Play,
+    label: "Demo Interactiva",
+    to: "/demo",
+    children: [
+      { label: "Demo Interactiva", to: "/demo" },
+    ],
+  },
+];
+
+function Sidebar() {
+  const location = useLocation();
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+
+  const toggleSection = (label: string) => {
+    setExpanded((prev) => ({ ...prev, [label]: !prev[label] }));
+  };
+
+  return (
+    <aside className="hidden lg:flex w-60 border-r border-border bg-card flex-col">
+      {/* Search */}
+      <div className="px-3 py-3 border-b border-border">
+        <button className="flex items-center gap-2 w-full px-3 py-1.5 rounded-md bg-muted text-sm text-muted-foreground hover:bg-accent transition-colors">
+          <Search size={14} />
+          <span className="flex-1 text-left">Buscar...</span>
+          <kbd className="text-[10px] font-mono bg-background px-1.5 py-0.5 rounded border border-border">Ctrl K</kbd>
+        </button>
+      </div>
+
+      {/* Nav */}
+      <nav className="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
+        {/* Home link */}
+        <Link
+          to="/"
+          className={`flex items-center gap-2.5 px-3 py-1.5 rounded-md text-[13px] font-medium transition-colors ${
+            location.pathname === "/"
+              ? "bg-accent text-foreground"
+              : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
+          }`}
+        >
+          Descubre Jurify CRM
+        </Link>
+
+        {sidebarSections.map((section) => {
+          const isActive = location.pathname.startsWith(section.to);
+          const isOpen = expanded[section.label] ?? isActive;
+
+          return (
+            <div key={section.label}>
+              <button
+                onClick={() => toggleSection(section.label)}
+                className={`flex items-center gap-2 w-full px-3 py-1.5 rounded-md text-[13px] transition-colors ${
+                  isActive
+                    ? "text-foreground font-medium"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                }`}
+              >
+                <section.icon size={14} className="flex-shrink-0" />
+                <span className="flex-1 text-left truncate">{section.label}</span>
+                {isOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+              </button>
+
+              {isOpen && (
+                <div className="ml-5 pl-3 border-l border-border space-y-0.5 mt-0.5">
+                  {section.children.map((child) => {
+                    const childActive = location.pathname === child.to;
+                    return (
+                      <Link
+                        key={child.to}
+                        to={child.to}
+                        className={`block px-3 py-1 rounded-md text-[13px] transition-colors ${
+                          childActive
+                            ? "bg-accent text-foreground font-medium"
+                            : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    );
+                  })}
+                  <Link
+                    to={section.to}
+                    className="block px-3 py-1 rounded-md text-[13px] text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                  >
+                    Capacidades →
+                  </Link>
+                  <Link
+                    to={section.to}
+                    className="block px-3 py-1 rounded-md text-[13px] text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                  >
+                    Cómo usar →
+                  </Link>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </nav>
+
+      {/* Footer */}
+      <div className="px-3 py-3 border-t border-border flex items-center gap-2">
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Globe size={12} />
+          <span>Español</span>
+          <ChevronDown size={10} />
+        </div>
+        <div className="ml-auto flex items-center gap-1.5">
+          <button className="p-1 text-muted-foreground hover:text-foreground transition-colors">
+            <Settings size={14} />
+          </button>
+          <button className="p-1 text-muted-foreground hover:text-foreground transition-colors">
+            <Moon size={14} />
+          </button>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+/* ─── Top Bar ─── */
+
+function TopBar() {
+  return (
+    <header className="sticky top-0 z-30 flex items-center justify-end h-12 px-4 border-b border-border bg-card/80 backdrop-blur-md">
+      <div className="flex items-center gap-3">
+        <a href="#" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors">
+          Iniciar sesión
+        </a>
+        <a
+          href="#"
+          className="text-[13px] font-medium px-3.5 py-1.5 rounded-lg bg-foreground text-background hover:opacity-90 transition-opacity"
+        >
+          Probar gratis
+        </a>
+      </div>
+    </header>
   );
 }
