@@ -1,6 +1,4 @@
-import { createHandler } from '../dist/server/index.js';
-
-const serverHandler = createHandler();
+import serverHandler from '../dist/server/index.js';
 
 export default async function handler(req, res) {
   try {
