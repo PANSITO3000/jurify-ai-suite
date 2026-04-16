@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   FileSearch, PenTool, MessageSquare, Bot, Briefcase,
-  Search, Users, Zap, Shield, Play, ArrowRight
+  Search, Users, Zap, Shield, Play, ArrowRight, Settings, Cloud
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -270,6 +270,26 @@ const sidebarSections = [
     to: "/demo",
     children: [
       { label: "Demo Interactiva", to: "/demo" },
+    ],
+  },
+  {
+    icon: Cloud,
+    label: "Base de Conocimientos",
+    to: "/knowledge",
+    children: [
+      { label: "Configuración", to: "/knowledge/config" },
+      { label: "Facturación", to: "/knowledge/billing" },
+      { label: "Funciones Avanzadas", to: "/knowledge/advanced" },
+    ],
+  },
+  {
+    icon: Settings,
+    label: "Central de Desarrollo",
+    to: "/dev",
+    children: [
+      { label: "Personalización", to: "/dev/customize" },
+      { label: "API e Integraciones", to: "/dev/api" },
+      { label: "Estado del Sistema", to: "/dev/status" },
     ],
   },
 ];
