@@ -93,6 +93,24 @@
   --sidebar-accent-foreground: oklch(0.25 0.03 260);
   --sidebar-border: oklch(0.92 0.01 250);
   --sidebar-ring: oklch(0.55 0.18 255);
+  --card-purple: oklch(0.92 0.05 290);
+  --card-purple-icon: oklch(0.85 0.09 290);
+  --card-pink: oklch(0.93 0.04 350);
+  --card-pink-icon: oklch(0.86 0.08 350);
+  --card-yellow: oklch(0.95 0.06 90);
+  --card-yellow-icon: oklch(0.88 0.11 90);
+  --card-red: oklch(0.92 0.05 25);
+  --card-red-icon: oklch(0.85 0.1 25);
+  --card-blue: oklch(0.92 0.05 250);
+  --card-blue-icon: oklch(0.84 0.1 250);
+  --card-orange: oklch(0.94 0.05 70);
+  --card-orange-icon: oklch(0.87 0.1 70);
+  --card-green: oklch(0.93 0.05 155);
+  --card-green-icon: oklch(0.86 0.1 155);
+  --card-teal: oklch(0.92 0.04 190);
+  --card-teal-icon: oklch(0.85 0.08 190);
+  --card-gray: oklch(0.94 0.01 260);
+  --card-gray-icon: oklch(0.88 0.02 260);
 }
 
 .dark {
